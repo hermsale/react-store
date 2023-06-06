@@ -1,5 +1,7 @@
 import React from "react"
 
+
+
 import Layout from "../../Components/Layout"
 import Card from "../../Components/Card"
 import { ProductDetail } from "../../Components/ProductDetail"
@@ -23,6 +25,7 @@ function Home() {
 
   return (
       <Layout>
+       
         <h1>Home</h1>
         <div className="grid justify-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4  max-w-screen-lg ">
           {
@@ -35,6 +38,7 @@ function Home() {
             ))
           }
         </div>
+       
         <ProductDetail/>
       </Layout>
   )

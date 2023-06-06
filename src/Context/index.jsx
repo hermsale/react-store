@@ -14,15 +14,32 @@ const ShoppingCartContext = createContext();
 
 
 function ShoppingCartProvider({children}){
-    // contador de items en el carrito
+    // Shopping Cart item count ////////////////////////////////////
     const [count, setCount ] = React.useState(0)
+
+    // Product Detail open/close //////////////////////////////////////////////////////
+    const [isProductDetailOpen, setIsProductDetailOpen] = React.useState(false)
+
+    // creamos las funciones para abrir y cerrar el aside. Para que simplemente exportemos la logica 
+    const openProductDetail = () => setIsProductDetailOpen(prevState => !prevState);
+    const closeProductDetail = () => setIsProductDetailOpen(false);
+
+    // productDetail - show ProductDetail - recibirá un objeto
+    const [productShow, setProductShow] = React.useState({})
+
+    console.log(productShow);
 
     console.log(count);
 
     return (
         <ShoppingCartContext.Provider value={{
             count,
-            setCount
+            setCount,
+            openProductDetail,
+            closeProductDetail,
+            isProductDetailOpen,
+            productShow, 
+            setProductShow
         }}>
             {children}
         </ShoppingCartContext.Provider>
