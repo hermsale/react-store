@@ -5,7 +5,7 @@ import { ShoppingCartContext } from "../../Context";
 function Card({...data}) {
     const context = useContext(ShoppingCartContext)
 
-    const showProduct = (...data) =>{
+    const showProduct = (data) =>{
         context.openProductDetail()
         context.setProductShow(data);
     }
