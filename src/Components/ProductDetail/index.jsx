@@ -19,7 +19,7 @@ function ProductDetail(){
                 ></XCircleIcon>
             </div>
             <figure className='px-6'>
-                <img className='w-full h-full' src={context.productShow?.images[0]} alt={context.productShow?.title} />
+                <img className='w-full h-full' src={context.productShow?.images && context.productShow?.images[0]} alt={context.productShow?.title} />
             </figure>
             <p className='flex flex-col p-6'>
                 <span className='font-medium text-2xl'>${context.productShow.price}</span>
