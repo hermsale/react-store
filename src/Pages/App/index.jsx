@@ -14,6 +14,7 @@ import NavBar from '../../Components/NavBar';
 
 // CSS
 import './App.css'
+import { CheckOutSideMenu } from '../../Components/CheckOutSideMenu';
 
 const AppRoutes = () =>{
   let routes = useRoutes([
@@ -34,6 +35,7 @@ function App() {
       <BrowserRouter>
         <AppRoutes/>
         <NavBar/>
+      <CheckOutSideMenu/>
       </BrowserRouter>
     </ShoppingCartProvider>
   ) 

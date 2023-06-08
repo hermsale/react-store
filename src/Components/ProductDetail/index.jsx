@@ -1,8 +1,8 @@
-import './style.css';
 import {  XCircleIcon  } from '@heroicons/react/24/solid'
 import { ShoppingCartContext } from "../../Context";
 import { useContext } from 'react';
 
+import './style.css';
 
 function ProductDetail(){
 

@@ -1,0 +1,9 @@
+.aside__checkOutSideMenu{
+    width: 360px;
+
+    /* le restamos 68px del alto que es lo que nos resta por el navbar que ocupa 68px */
+    height: calc(100vh - 68px);
+
+    /* lo llevamos a 68px mas arriba */
+    top: 68px;
+}
