@@ -27,9 +27,11 @@ function ShoppingCartProvider({children}){
     // productDetail - show ProductDetail - recibirá un objeto
     const [productShow, setProductShow] = React.useState({})
 
-    console.log(productShow);
+    // almacenamos los productos que seleccionan, en un carrito de productos
+    // será un array de objetos 
+    const [cartProducts, setCartProducts] = React.useState([]);
 
-    console.log(count);
+    console.log(cartProducts);
 
     return (
         <ShoppingCartContext.Provider value={{
@@ -39,7 +41,9 @@ function ShoppingCartProvider({children}){
             closeProductDetail,
             isProductDetailOpen,
             productShow, 
-            setProductShow
+            setProductShow,
+            cartProducts, 
+            setCartProducts
         }}>
             {children}
         </ShoppingCartContext.Provider>

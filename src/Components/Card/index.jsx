@@ -3,11 +3,19 @@ import {  PlusIcon  } from '@heroicons/react/24/solid'
 import { ShoppingCartContext } from "../../Context";
 
 function Card({...data}) {
+
     const context = useContext(ShoppingCartContext)
 
+    // abrir el aside y asignar el ProductDetail seleccionado
     const showProduct = (data) =>{
         context.openProductDetail()
         context.setProductShow(data);
+    }
+
+    // agregar +1 al contador de productos y concatenar con spreed operator lo que ya habia en el array + productDetail
+    const addProductsToCart = (productData) =>{
+        context.setCount(context.count + 1)
+        context.setCartProducts([...context.cartProducts, productData]);
     }
     
     return (
@@ -22,10 +30,14 @@ function Card({...data}) {
                  alt={data.title} 
                  onClick={() => showProduct(data)}
                 />
-                <div className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full  m-2 p-1"
-                    onClick={() => context.setCount(context.count + 1)}
+                <div 
+                    className="absolute top-0 right-0 flex justify-center hover:bg-green-200 items-center
+                                bg-white w-6 h-6 rounded-full  m-2 p-1"
+                                onClick={() => addProductsToCart(data)} 
                 >
-                    <PlusIcon className="h-6 w-6 text-black" />
+                    <PlusIcon
+                     className="h-6 w-6 text-black"    
+                    />
                 </div>
             </figure>
             <p className="flex justify-between"  onClick={() => showProduct(data)} >

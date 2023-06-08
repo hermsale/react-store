@@ -7,7 +7,7 @@ import { useContext } from 'react';
 function ProductDetail(){
 
     const context = useContext(ShoppingCartContext)
-    console.log('product show is', context.productShow)
+    // console.log('product show is', context.productShow)
    
     return(
         <aside // hidden es utilizado para ocultar un elemento de la interfaz
