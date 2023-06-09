@@ -8,11 +8,10 @@ import OrderCard from '../OrderCard';
 function CheckOutSideMenu(){
 
     const context = useContext(ShoppingCartContext)
-    // console.log('product show is', context.productShow)
-   
+     
     return(
         <aside // hidden es utilizado para ocultar un elemento de la interfaz
-        className={`${context.isCheckOutSideMenuOpen ?  'flex' : 'hidden'}  aside__checkOutSideMenu scrollable-cards transition-all duration-300 flex-col fixed right-0 border border-black rounded-lg bg-white`}>
+        className={`${context.isCheckOutSideMenuOpen ?  'flex' : 'hidden'}  aside__checkOutSideMenu overflow-y-scroll transition-all duration-300 flex-col fixed right-0 border border-black rounded-lg bg-white`}>
             <div className='flex justify-between items-center p-6'>
                 <h2 className='font-medium text-xl'>My Order</h2>
                 <div>

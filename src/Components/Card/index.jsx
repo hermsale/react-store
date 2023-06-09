@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import {  PlusIcon  } from '@heroicons/react/24/solid'
+import {  PlusIcon, CheckIcon  } from '@heroicons/react/24/solid'
 import { ShoppingCartContext } from "../../Context";
 
 function Card({...data}) {
@@ -14,6 +14,36 @@ function Card({...data}) {
         context.closeCheckOutSideMenu();
         context.setProductShow(data);
     }
+
+      
+    const renderIcon = (title) => {
+        // verificamos si encuentra el producto en el carrito de compras 
+    
+        const productCart = context.cartProducts.find(item => item.title === title);
+            if(productCart){ 
+                return(
+                    <div 
+                    className="absolute top-0 right-0 flex justify-center hover:bg-green-200 items-center
+                                bg-lime-500 w-6 h-6 rounded-full  m-2 p-1"
+                                onClick={(event) => addProductsToCart(event, data)} 
+                    >
+                    <CheckIcon className="h-6 w-6 text-black"/>
+                    </div>
+                )
+            }else{
+                return(
+                    <div 
+                    className="absolute top-0 right-0 flex justify-center hover:bg-green-200 items-center
+                                bg-white w-6 h-6 rounded-full  m-2 p-1"
+                                onClick={(event) => addProductsToCart(event, data)} 
+                    >
+                    <PlusIcon className="h-6 w-6 text-black"/>
+                    </div>
+                )
+            }
+        
+        
+       }
 
     // agregar +1 al contador de productos y concatenar con spreed operator lo que ya habia en el array + productDetail
     const addProductsToCart = (event, productData) =>{
@@ -59,15 +89,7 @@ function Card({...data}) {
                 src={data.images[0]}
                  alt={data.title} 
                 />
-                <div 
-                    className="absolute top-0 right-0 flex justify-center hover:bg-green-200 items-center
-                                bg-white w-6 h-6 rounded-full  m-2 p-1"
-                                onClick={(event) => addProductsToCart(event, data)} 
-                >
-                    <PlusIcon
-                     className="h-6 w-6 text-black"    
-                    />
-                </div>
+                {renderIcon(data.title)}
             </figure>
             <p className="flex justify-between"  onClick={() => showProduct(data)} >
             <span className="text-sm font-light">{data.title}</span>

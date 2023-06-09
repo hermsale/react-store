@@ -7,33 +7,3 @@
     /* lo llevamos a 68px mas arriba */
     top: 68px;
 }
-
-.scrollable-cards {
-	overflow: scroll;
-}
-
-/* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  .scrollable-cards {
-    scrollbar-width: auto;
-    scrollbar-color: #989898 #ffffff;
-		/* overflow-x: hidden; */
-  }
-
-  /* Chrome, Edge, and Safari */
-  .scrollable-cards::-webkit-scrollbar {
-    width: 16px;
-		/* overflow-x: hidden; */
-  }
-
-  .scrollable-cards::-webkit-scrollbar-track {
-    background: #ffffff;
-		/* overflow-x: hidden; */
-  }
-
-  .scrollable-cards::-webkit-scrollbar-thumb {
-    background-color: #686868;
-    border-radius: 10px;
-    border: 2px solid #2f2f2f;
-		/* overflow-x: hidden; */
-  }
