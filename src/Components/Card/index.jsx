@@ -8,7 +8,8 @@ function Card({...data}) {
 
     // abrir el aside y asignar el ProductDetail seleccionado
     const showProduct = (data) =>{
-        
+        console.log(data);
+        console.log('se pulso shoProduct');
         context.openProductDetail()
         context.closeCheckOutSideMenu();
         context.setProductShow(data);
@@ -16,17 +17,40 @@ function Card({...data}) {
 
     // agregar +1 al contador de productos y concatenar con spreed operator lo que ya habia en el array + productDetail
     const addProductsToCart = (event, productData) =>{
-        // 
+        
+        console.log('se pulso addProductsToCart');
         event.stopPropagation();
+        // sumamos al contador del carrito general
         context.setCount(context.count + 1)
-        context.setCartProducts([...context.cartProducts, productData]);
+
+        // verificamos que haya una coincidencia de que ya exista el producto
+        const productExists = context.cartProducts.some(item => item.title === productData.title)
+
+        // si el producto existe 
+        if(productExists){
+            // buscamos el producto y lo guardamos en productCart
+            console.log('se encuentra este elemento');
+            const productCart = context.cartProducts.find(item => item.title === productData.title);
+            
+            console.log(productCart.quantity);
+            productCart.quantity += 1; 
+
+            // mostramos el carro de compras con el valor quantity actualizado
+            context.setProductShow(productCart);
+        }else{
+            productData.quantity = 1; 
+            // realizamos la primera carga del producto en el carro de compras 
+            context.setCartProducts([...context.cartProducts, productData]);
+            console.log(productData.quantity);
+            console.log('producto agreado');
+        }
         context.openCheckOutSideMenu();
         context.closeProductDetail()
     }
     
     return (
         <div
-         className='bg-slate-400 cursor-pointer w-56 h-60 rounded-lg px-1 pt-0.5' 
+         className='bg-slate-400 cursor-pointer hover:bg-slate-200 w-56 h-60 rounded-lg px-1 pt-0.5' 
             >
             <figure className='relative mb-2 w-full h-4/5' onClick={() => showProduct(data)}>
                 <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5">

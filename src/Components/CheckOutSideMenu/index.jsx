@@ -3,6 +3,7 @@ import { ShoppingCartContext } from "../../Context";
 import { useContext } from 'react';
 
 import './style.css';
+import OrderCard from '../OrderCard';
 
 function CheckOutSideMenu(){
 
@@ -11,14 +12,32 @@ function CheckOutSideMenu(){
    
     return(
         <aside // hidden es utilizado para ocultar un elemento de la interfaz
-        className={`${context.isCheckOutSideMenuOpen ?  'flex' : 'hidden'}  aside__checkOutSideMenu transition-all duration-300 flex-col fixed right-0 border border-black rounded-lg bg-white`}>
-            <div className='flex justify-between items-center'>
-                <h2 className='font-medium text-xl p-6'>My Order</h2>
-                <XCircleIcon  className="h-6 w-6 text-red-600 cursor-pointer"
-                 onClick={() => context.closeCheckOutSideMenu()}
-                ></XCircleIcon>
+        className={`${context.isCheckOutSideMenuOpen ?  'flex' : 'hidden'}  aside__checkOutSideMenu scrollable-cards transition-all duration-300 flex-col fixed right-0 border border-black rounded-lg bg-white`}>
+            <div className='flex justify-between items-center p-6'>
+                <h2 className='font-medium text-xl'>My Order</h2>
+                <div>
+                    <XCircleIcon  className="h-6 w-6 text-red-600 cursor-pointer"
+                    onClick={() => context.closeCheckOutSideMenu()}
+                    />
+                </div>
             </div>
-        </aside>
+                <div className='px-6'>
+                    {
+                        context.cartProducts.map(product => (
+                            <OrderCard
+                            key={product.id}
+                            title={product.title}
+                            imgUrl={product.images}
+                            price={product.price}
+                            quantity={product.quantity}
+                            />
+                            )
+
+                        )
+                    }
+                </div>
+           
+        </aside>                
     )
 }
 
