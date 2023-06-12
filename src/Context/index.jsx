@@ -31,7 +31,7 @@ function ShoppingCartProvider({children}){
     // será un array de objetos 
     const [cartProducts, setCartProducts] = React.useState([]);
 
-    console.log(cartProducts);
+    // console.log(cartProducts);
 
     // CheckOut Side Menu open/close
     const [isCheckOutSideMenuOpen, setIsCheckOutSideMenuOpen] = React.useState(false)
@@ -39,6 +39,12 @@ function ShoppingCartProvider({children}){
     // creamos las funciones para abrir y cerrar el aside. Para que simplemente exportemos la logica 
     const openCheckOutSideMenu = () => setIsCheckOutSideMenuOpen(true);
     const closeCheckOutSideMenu = () => setIsCheckOutSideMenuOpen(false);
+
+    // ////////////////////////////////////////////////////////////////////
+
+    // almacenamos los productos en una orden de compra 
+    // Shopping Cart - orders 
+    const [order, setOrder ] = React.useState([]);
 
     return (
         <ShoppingCartContext.Provider value={{
@@ -53,7 +59,9 @@ function ShoppingCartProvider({children}){
             setCartProducts,
             isCheckOutSideMenuOpen,
             openCheckOutSideMenu,
-            closeCheckOutSideMenu 
+            closeCheckOutSideMenu,
+            order,
+            setOrder
         }}>
             {children}
         </ShoppingCartContext.Provider>
