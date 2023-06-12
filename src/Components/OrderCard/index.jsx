@@ -2,7 +2,7 @@ import {  XCircleIcon  } from '@heroicons/react/24/solid'
 import PropTypes from 'prop-types'
 
 
-function OrderCard({ title, imgUrl, price, quantity }) {
+function OrderCard({ title, imgUrl, price, quantity, handleDelete, id }) {
 
     // correcion para que no salga error en el pasaje de props
     OrderCard.propTypes = {
@@ -10,6 +10,8 @@ function OrderCard({ title, imgUrl, price, quantity }) {
         imgUrl: PropTypes.node.isRequired,
         price: PropTypes.node.isRequired,
         quantity: PropTypes.node.isRequired,
+        id: PropTypes.node.isRequired,
+        handleDelete: PropTypes.func.isRequired,
       }
 
   return (
@@ -27,7 +29,10 @@ function OrderCard({ title, imgUrl, price, quantity }) {
             <p className='text-lg font-medium gap-2 mx-1'>
                 {price}
             </p>
-            <XCircleIcon  className="h-6 w-6 text-black-600 cursor-pointer hover:text-red-600" />
+            <XCircleIcon  
+                className="h-6 w-6 text-black-600 cursor-pointer hover:text-red-600" 
+                onClick={() => handleDelete(id)}
+            />
         </div>
     </div>
   )

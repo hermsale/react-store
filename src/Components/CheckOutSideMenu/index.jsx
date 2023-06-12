@@ -7,7 +7,20 @@ import OrderCard from '../OrderCard';
 
 function CheckOutSideMenu(){
 
-    const context = useContext(ShoppingCartContext)
+    const context = useContext(ShoppingCartContext);
+
+    const handleDelete = (id) =>{
+        const productCart = context.cartProducts.find(item => item.id === id);
+        if(productCart.quantity > 1){
+            productCart.quantity -= 1;
+            context.setCount(context.count - 1)
+        }else{
+            const filteredProducts = context.cartProducts.filter(product => product.id != id);
+            context.setCartProducts(filteredProducts);
+            context.setCount(context.count - 1)
+        }
+        
+    }
      
     return(
         <aside // hidden es utilizado para ocultar un elemento de la interfaz
@@ -29,6 +42,8 @@ function CheckOutSideMenu(){
                             imgUrl={product.images}
                             price={product.price}
                             quantity={product.quantity}
+                            handleDelete={handleDelete}
+                            id={product.id}
                             />
                             )
 

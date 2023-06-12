@@ -72,7 +72,9 @@ function NavBar() {
                 </NavLink>
             </li> 
             <li className='flex items-center '>
-                 <ShoppingBagIcon className="h-6 w-6 text-black mr-0.5"/> {context.count}
+                 <ShoppingBagIcon className="h-6 w-6 text-black mr-0.5"
+                 onClick={() => context.openCheckOutSideMenu() }
+                 /> {context.count}
             </li>
         </ul>
      </nav>
