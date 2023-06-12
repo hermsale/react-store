@@ -5,7 +5,6 @@
  */
 export const totalPrice = (products) => {
     let sum = 0
-    console.log(products.quantity)
     products.forEach(product => sum += product.price * product.quantity)
     return sum
   }
