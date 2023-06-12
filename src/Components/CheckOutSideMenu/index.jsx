@@ -11,11 +11,13 @@ function CheckOutSideMenu(){
     const context = useContext(ShoppingCartContext);
 
     const handleDelete = (id) =>{
+        // busca el producto y lo guarda en productCart
         const productCart = context.cartProducts.find(item => item.id === id);
         if(productCart.quantity > 1){
             productCart.quantity -= 1;
             context.setCount(context.count - 1)
         }else{
+            // guarda todos los productos menos el que se filtra
             const filteredProducts = context.cartProducts.filter(product => product.id != id);
             context.setCartProducts(filteredProducts);
             context.setCount(context.count - 1)

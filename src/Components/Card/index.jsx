@@ -15,7 +15,7 @@ function Card({...data}) {
         context.setProductShow(data);
     }
 
-      
+    // render function 
     const renderIcon = (title) => {
         // verificamos si encuentra el producto en el carrito de compras 
     
