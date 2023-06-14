@@ -4,11 +4,12 @@ import { useContext } from 'react';
 
 import './style.css';
 import OrderCard from '../OrderCard';
-import { totalPrice } from '../utils';
+import { totalPrice, totalProducts } from '../utils';
 
 function CheckOutSideMenu(){
 
     const context = useContext(ShoppingCartContext);
+
 
     const handleDelete = (id) =>{
         // busca el producto y lo guarda en productCart
@@ -31,7 +32,9 @@ function CheckOutSideMenu(){
             date:new Date().toLocaleString(),
             products: context.cartProducts,
             totalProducts: context.cartProducts.length,
-            totalPrice: totalPrice(context.cartProducts)
+            // obtenemos el total de los productos contemplando la cantidad de c/u
+            quantityProducts: totalProducts(context.cartProducts),
+            totalPrice: totalPrice(context.cartProducts),
         }        
 
         context.setOrder([...context.order, orderToAdd]);
@@ -73,7 +76,8 @@ function CheckOutSideMenu(){
                       <span className='font-light'>Total:</span>  
                       <span className='font-medium text-2xl'>${totalPrice(context.cartProducts)}</span>
                     </p>
-                    <button className='bg-black py-3 text-white w-full rounded-lg hover:bg-slate-200 hover:border border-black hover:text-black hover:font-medium' onClick={() => handleCheckout()}>¡CheckOut!</button>
+                    <button className='bg-black py-3 text-white w-full rounded-lg hover:bg-slate-200 hover:border border-black hover:text-black hover:font-medium'
+                     onClick={() => handleCheckout()}>¡CheckOut!</button>
                 </div>
         </aside>                
     )
