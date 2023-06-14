@@ -45,6 +45,7 @@ function ShoppingCartProvider({children}){
     // almacenamos los productos en una orden de compra 
     // Shopping Cart - orders 
     const [order, setOrder ] = React.useState([]);
+    console.log(order);
 
     return (
         <ShoppingCartContext.Provider value={{

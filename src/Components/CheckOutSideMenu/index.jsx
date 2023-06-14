@@ -24,6 +24,21 @@ function CheckOutSideMenu(){
         }
         
     }
+
+    // esta función crea un objeto orderToAdd que sera agregada al array Order 
+    const handleCheckout = () =>{
+        const orderToAdd = {
+            date:new Date().toLocaleString(),
+            products: context.cartProducts,
+            totalProducts: context.cartProducts.length,
+            totalPrice: totalPrice(context.cartProducts)
+        }        
+
+        context.setOrder([...context.order, orderToAdd]);
+        context.setCartProducts([]);
+        context.setCount(0);
+        context.closeCheckOutSideMenu();
+    }
      
     return(
         <aside // hidden es utilizado para ocultar un elemento de la interfaz
@@ -58,6 +73,7 @@ function CheckOutSideMenu(){
                       <span className='font-light'>Total:</span>  
                       <span className='font-medium text-2xl'>${totalPrice(context.cartProducts)}</span>
                     </p>
+                    <button className='bg-black py-3 text-white w-full rounded-lg hover:bg-slate-200 hover:border border-black hover:text-black hover:font-medium' onClick={() => handleCheckout()}>¡CheckOut!</button>
                 </div>
         </aside>                
     )
