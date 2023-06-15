@@ -11,12 +11,11 @@ function OrderCard({ title, imgUrl, price, quantity, handleDelete, id }) {
         price: PropTypes.node.isRequired,
         quantity: PropTypes.node.isRequired,
         id: PropTypes.node.isRequired,
-        handleDelete: PropTypes.func.isRequired,
+        handleDelete: PropTypes.func,
       }
 
       let renderXCircleIcon;
-
-      if(handleDelete){
+      if(handleDelete) {
         renderXCircleIcon = <XCircleIcon  className="h-6 w-6 text-black-600 cursor-pointer hover:text-red-600" onClick={() => handleDelete(id)}
             />
       }
