@@ -14,6 +14,7 @@ function OrderCard({ title, imgUrl, price, quantity, handleDelete, id }) {
         handleDelete: PropTypes.func,
       }
 
+      
       let renderXCircleIcon;
       if(handleDelete) {
         renderXCircleIcon = <XCircleIcon  className="h-6 w-6 text-black-600 cursor-pointer hover:text-red-600" onClick={() => handleDelete(id)}
@@ -21,7 +22,7 @@ function OrderCard({ title, imgUrl, price, quantity, handleDelete, id }) {
       }
 
   return (
-    <div className="flex justify-between items-center mx-1">
+    <div className="flex justify-between items-center mx-1 hover:bg-slate-200 p-1 rounded-lg">
         <div className='flex items-center gap-2 mb-1'>
             <p>{quantity}</p>
             <figure className='w-20 h-20'>

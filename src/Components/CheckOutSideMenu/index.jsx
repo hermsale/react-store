@@ -45,15 +45,15 @@ function CheckOutSideMenu(){
         context.closeCheckOutSideMenu();
     }
      
-    let linkCheckOut;
 
+    let linkCheckOut;
     // si hay algo en el carrito, renderizamos el CheckOut 
-    if(context.count > 0) {
+    
         linkCheckOut = <Link to={'/my-orders/last'}>
-                            <button className='bg-black py-3 text-white w-full rounded-lg hover:bg-slate-200 hover:border border-black hover:text-black hover:font-medium'
+                            <button disabled={!context.count>0} className='bg-black py-3  text-white w-full rounded-lg hover:bg-slate-200 hover:border border-black hover:text-black hover:font-medium'
                             onClick={() => handleCheckout()}>¡CheckOut!</button>
                         </Link>
-    }
+    
 
     return(
         <aside // hidden es utilizado para ocultar un elemento de la interfaz

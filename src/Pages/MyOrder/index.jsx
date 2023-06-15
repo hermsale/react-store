@@ -8,12 +8,13 @@ function MyOrder() {
  
 
   const context = useContext(ShoppingCartContext);
+  console.log('my order', context.order.slice(-1))
 
     return (
       <Layout>
         
-          Hola MyOrder
-          <div className='flex flex-col w-80'>
+          <h1 className="text-2xl font-bold mb-2">MyOrder Last</h1>
+          <div className='flex flex-col w-2/5 border my-2 p-2 rounded-lg'>
           { 
             context.order?.slice(-1)[0].products.map(product =>(
               <OrderCard
@@ -23,8 +24,6 @@ function MyOrder() {
                 imgUrl={product.images}
                 price={product.price}
                 quantity={product.quantity}
-                
-                
               />
             ))
           }
