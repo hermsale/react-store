@@ -2,7 +2,6 @@ import {  XCircleIcon  } from '@heroicons/react/24/solid'
 import PropTypes from 'prop-types'
 import { useContext } from 'react';
 import { ShoppingCartContext } from '../../Context';
-import { totalPrice } from '../../utils';
 
 
 function OrderCard({ title, imgUrl, price, quantity, handleDelete, id }) {
@@ -18,15 +17,34 @@ function OrderCard({ title, imgUrl, price, quantity, handleDelete, id }) {
       }
 
       
+    //   manipulamos el renderizado de el icono de borrar, ya que en la vista de MyOrder Last, no se debe poder borrar
       let renderXCircleIcon;
       if(handleDelete) {
         renderXCircleIcon = <XCircleIcon  className="h-6 w-6 text-black-600 cursor-pointer hover:text-red-600" onClick={() => handleDelete(id)}
             />
       }
 
+    //   manipulamos el renderizado del totalPriceItem para que en la vista de MyOrder Last, se pueda visualizar el importe total
       let totalPriceItem;
       if(!context.count > 0){
-        totalPriceItem = price*quantity;
+        totalPriceItem = <p className='text-lg font-medium gap-2 mx-1'>
+            <p className='flex font-light '>Importe</p>
+            <p className='text-center'>{price*quantity}</p>           
+        </p>;
+      }
+
+      //   manipulamos el renderizado del itemPrice para que en la vista de MyOrder Last, se pueda visualizar el importe de cada item 
+    //   y si se encuentra en la vista de CheckOutSideMenu se vea solo el valor del item
+      let itemPrice;
+      if(!context.count){
+        itemPrice = <p className='text-lg font-medium gap-2 mx-1'>
+            <p className='flex font-light '>Unidad</p>
+            <p className='text-center'>{price}</p>           
+        </p>
+      }else{
+        itemPrice = <p className='text-lg font-medium gap-2 mx-1'>
+                {price}
+        </p>
       }
 
 
@@ -41,17 +59,11 @@ function OrderCard({ title, imgUrl, price, quantity, handleDelete, id }) {
                 {title}
             </p>
         </div>
-        <div className='flex flex-row'>
-            <p className='text-lg font-medium gap-2 mx-1'>
-                <p className='font-light'>Unidad</p>
-                <p>{price}</p>
-            </p>
-            <p className='text-lg font-medium gap-2 mx-1'>
-                <p className='font-light'>Importe</p> 
-                <p>{totalPriceItem}</p>
-            </p>
-        </div>
+        <div className='flex row-auto'>
+            {itemPrice}
+            {totalPriceItem}
             {renderXCircleIcon}
+        </div>
     </div>
   )
 }
