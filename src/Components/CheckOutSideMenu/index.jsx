@@ -6,7 +6,7 @@ import { ShoppingCartContext } from "../../Context";
 import OrderCard from '../OrderCard';
 import './style.css';
 import {  XCircleIcon  } from '@heroicons/react/24/solid'
-import { totalPrice, totalProducts } from '../utils';
+import { totalPrice, totalProducts } from '../../utils';
 
 function CheckOutSideMenu(){
 

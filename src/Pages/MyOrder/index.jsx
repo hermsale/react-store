@@ -8,7 +8,6 @@ function MyOrder() {
  
 
   const context = useContext(ShoppingCartContext);
-  console.log('my order', context.order.slice(-1))
 
     return (
       <Layout>

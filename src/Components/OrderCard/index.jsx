@@ -1,9 +1,12 @@
 import {  XCircleIcon  } from '@heroicons/react/24/solid'
 import PropTypes from 'prop-types'
+import { useContext } from 'react';
+import { ShoppingCartContext } from '../../Context';
+import { totalPrice } from '../../utils';
 
 
 function OrderCard({ title, imgUrl, price, quantity, handleDelete, id }) {
-
+    const context = useContext(ShoppingCartContext);
     // correcion para que no salga error en el pasaje de props
     OrderCard.propTypes = {
         title: PropTypes.node.isRequired,
@@ -21,6 +24,12 @@ function OrderCard({ title, imgUrl, price, quantity, handleDelete, id }) {
             />
       }
 
+      let totalPriceItem;
+      if(!context.count > 0){
+        totalPriceItem = price*quantity;
+      }
+
+
   return (
     <div className="flex justify-between items-center mx-1 hover:bg-slate-200 p-1 rounded-lg">
         <div className='flex items-center gap-2 mb-1'>
@@ -32,12 +41,17 @@ function OrderCard({ title, imgUrl, price, quantity, handleDelete, id }) {
                 {title}
             </p>
         </div>
-        <div className='flex row-auto'>
+        <div className='flex flex-row'>
             <p className='text-lg font-medium gap-2 mx-1'>
-                {price}
+                <p className='font-light'>Unidad</p>
+                <p>{price}</p>
             </p>
-            {renderXCircleIcon}
+            <p className='text-lg font-medium gap-2 mx-1'>
+                <p className='font-light'>Importe</p> 
+                <p>{totalPriceItem}</p>
+            </p>
         </div>
+            {renderXCircleIcon}
     </div>
   )
 }
