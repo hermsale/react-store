@@ -27,20 +27,20 @@ function OrderCard({ title, imgUrl, price, quantity, handleDelete, id }) {
     //   manipulamos el renderizado del totalPriceItem para que en la vista de MyOrder Last, se pueda visualizar el importe total
       let totalPriceItem;
       if(!context.count > 0){
-        totalPriceItem = <p className='text-lg font-medium gap-2 mx-1'>
-            <p className='flex font-light '>Importe</p>
+        totalPriceItem = <div className='text-lg font-medium gap-2 mx-1'>
+            <p className='flex font-light  mb-2 '>Importe</p>
             <p className='text-center'>{price*quantity}</p>           
-        </p>;
+        </div>;
       }
 
       //   manipulamos el renderizado del itemPrice para que en la vista de MyOrder Last, se pueda visualizar el importe de cada item 
     //   y si se encuentra en la vista de CheckOutSideMenu se vea solo el valor del item
       let itemPrice;
       if(!context.count){
-        itemPrice = <p className='text-lg font-medium gap-2 mx-1'>
-            <p className='flex font-light '>Unidad</p>
+        itemPrice = <div className='text-lg font-medium gap-2 mx-1'>
+            <p className='flex font-light mb-2'>Unidad</p>
             <p className='text-center'>{price}</p>           
-        </p>
+        </div>
       }else{
         itemPrice = <p className='text-lg font-medium gap-2 mx-1'>
                 {price}
