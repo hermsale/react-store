@@ -15,16 +15,13 @@ function Home() {
       .then(response => response.json())
       .then(data => 
         setItems(data)
-      )
-      
-      
+      )     
   }, [])
 
   return (
       <Layout>
        
-        <h1>Home</h1>
-        <div className="grid justify-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4  max-w-screen-lg ">
+        <div className="mt-5 grid justify-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4  max-w-screen-lg ">
           {
             items?.map((item) =>(
               <Card 

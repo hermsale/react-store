@@ -39,8 +39,13 @@ function CheckOutSideMenu(){
             totalPrice: totalPrice(context.cartProducts),
         }        
 
+        // concatenamos al order, el ultimo checkOut 
         context.setOrder([...context.order, orderToAdd]);
+
+        // guardamos exclusivamente solo ultimo checkOut, para acceder a su informacion 
         context.setLastCartProducts(context.cartProducts);
+
+        // ponemos en '0' el carrito y el contador 
         context.setCartProducts([]);
         context.setCount(0);
         context.closeCheckOutSideMenu();
