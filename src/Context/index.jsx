@@ -31,6 +31,9 @@ function ShoppingCartProvider({children}){
     // será un array de objetos 
     const [cartProducts, setCartProducts] = React.useState([]);
 
+    // creamos este estado, para guardar hacer uso del ultimo cartProducts. Ya que el cartProducts cuando hacemos un checkOut, se vacia
+    const [lastCartProducts, setLastCartProducts] = React.useState([]);
+
     // console.log(cartProducts);
 
     // CheckOut Side Menu open/close
@@ -62,7 +65,9 @@ function ShoppingCartProvider({children}){
             openCheckOutSideMenu,
             closeCheckOutSideMenu,
             order,
-            setOrder
+            setOrder,
+            lastCartProducts, 
+            setLastCartProducts
         }}>
             {children}
         </ShoppingCartContext.Provider>

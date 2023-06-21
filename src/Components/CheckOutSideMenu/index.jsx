@@ -40,6 +40,7 @@ function CheckOutSideMenu(){
         }        
 
         context.setOrder([...context.order, orderToAdd]);
+        context.setLastCartProducts(context.cartProducts);
         context.setCartProducts([]);
         context.setCount(0);
         context.closeCheckOutSideMenu();
@@ -50,7 +51,7 @@ function CheckOutSideMenu(){
     // si hay algo en el carrito, renderizamos el CheckOut 
     
         linkCheckOut = <Link to={'/my-orders/last'}>
-                            <button disabled={!context.count>0} className={`${context.count > 0 ? 'bg-black' : 'bg-red-500'} text-white w-full rounded-lg hover:bg-slate-200 hover:border border-black hover:text-black hover:font-medium `}
+                            <button disabled={!context.count>0} className={`${context.count > 0 ? 'bg-black' : 'bg-red-500'} text-white w-full rounded-lg mt-4  hover:bg-slate-200 hover:border border-black hover:text-black hover:font-medium `}
                             onClick={() => handleCheckout()}>¡CheckOut!</button>
                         </Link>
     
@@ -83,12 +84,12 @@ function CheckOutSideMenu(){
                         )
                     }
                 </div>
-                <div className='px-6'>
-                    <p className='flex justify-between items-center'>
+                <div className='px-6 flex flex-col '>
+                    <div className='flex justify-between items-center'>
                       <span className='font-light'>Total:</span>  
                       <span className='font-medium text-2xl'>${totalPrice(context.cartProducts)}</span>
-                    </p>
-                    {linkCheckOut}
+                    </div>
+                        {linkCheckOut}
                 </div>
         </aside>                
     )

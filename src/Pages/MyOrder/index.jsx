@@ -2,13 +2,14 @@ import { useContext } from "react";
 import { ShoppingCartContext } from "../../Context";
 import Layout from "../../Components/Layout"
 import OrderCard from "../../Components/OrderCard";
+import { totalPrice } from "../../utils";
 
 function MyOrder() {
 
  
 
   const context = useContext(ShoppingCartContext);
-
+  
     return (
       <Layout>
         
@@ -26,6 +27,7 @@ function MyOrder() {
               />
             ))
           }
+        <span className='font-medium text-2xl text-right mr-5'>Total ${totalPrice(context.lastCartProducts)}</span>
         </div>
       </Layout>
     )
