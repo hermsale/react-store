@@ -12,9 +12,9 @@ function MyOrder() {
   
     return (
       <Layout>
-        
+       
           <h1 className="text-2xl font-bold mb-2">MyOrder Last</h1>
-          <div className='flex flex-col border my-2 p-2 rounded-lg'>
+          <div className='flex flex-col w-1/2 border my-2 p-2 rounded-lg'>
           { 
             context.order?.slice(-1)[0].products.map(product =>(
               <OrderCard
