@@ -27,7 +27,11 @@ function MyOrder() {
   // este calculadorTotal es para cuando hay algo en myOrderLast 
   let calculatorTotal;
 
+  // creamos este titulo dinamico, para asignar dinamicamente cuando se trata de una Order o Order Last
+  let titleMyOrder;
+
   calculatorTotal =  <span className='font-medium text-2xl text-right mr-5'>Total ${totalPrice(context.lastCartProducts)}</span>
+
 
   // nos fijamos si hay algun producto con el Id que se obtiene por params
   if(!orderId){
@@ -42,9 +46,8 @@ function MyOrder() {
             quantity={product.quantity}
           />
         ))
-    
+    titleMyOrder = <h1 className="text-2xl font-bold mb-2">My Order Last </h1>
   }else{
-    { 
       myOrder = 
           orderId.products.map(product =>(
         <OrderCard
@@ -56,7 +59,7 @@ function MyOrder() {
           quantity={product.quantity}
         />
       ))
-    }
+    titleMyOrder = <h1 className="text-2xl font-bold mb-2">My Order </h1>
   }
         
     return (
@@ -66,7 +69,7 @@ function MyOrder() {
           <Link to={'/my-orders'} className="absolute left-0">
               <ChevronLeftIcon  className="h-6 w-6 text-black cursor-pointer"/>
           </Link>
-          <h1 className="text-2xl font-bold mb-2">My Order</h1>
+          {titleMyOrder}
         </div>
 
           <div className='flex flex-col w-1/2 border my-2 p-2 rounded-lg'>
