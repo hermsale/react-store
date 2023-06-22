@@ -50,6 +50,12 @@ function ShoppingCartProvider({children}){
     const [order, setOrder ] = React.useState([]);
     console.log(order);
 
+
+  const getOrder = (id) => {
+    console.log('el order id es ', order[id]);
+  return order[id];
+  }
+
     return (
         <ShoppingCartContext.Provider value={{
             count,
@@ -67,7 +73,8 @@ function ShoppingCartProvider({children}){
             order,
             setOrder,
             lastCartProducts, 
-            setLastCartProducts
+            setLastCartProducts,
+            getOrder
         }}>
             {children}
         </ShoppingCartContext.Provider>
