@@ -4,7 +4,9 @@ import Layout from "../../Components/Layout"
 import OrderCard from "../../Components/OrderCard";
 import { totalPrice } from "../../utils";
 
-import { useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
+
+import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 
 function MyOrder() {
   const context = useContext(ShoppingCartContext);
@@ -60,7 +62,13 @@ function MyOrder() {
     return (
       <Layout>
        
-          <h1 className="text-2xl font-bold mb-2">MyOrder Last</h1>
+        <div className="flex items-center justify-center relative w-80 mb-6">
+          <Link to={'/my-orders'} className="absolute left-0">
+              <ChevronLeftIcon  className="h-6 w-6 text-black cursor-pointer"/>
+          </Link>
+          <h1 className="text-2xl font-bold mb-2">My Order</h1>
+        </div>
+
           <div className='flex flex-col w-1/2 border my-2 p-2 rounded-lg'>
           { myOrderLast } { myOrderLast && calculatorTotal }
           { myOrder }
