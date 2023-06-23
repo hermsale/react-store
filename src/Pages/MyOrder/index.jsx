@@ -50,14 +50,14 @@ function MyOrder() {
   }else{
       myOrder = 
           orderId.products.map(product =>(
-        <OrderCard
-          key={product.id}
-          id={product.id}
-          title={product.title}
-          imgUrl={product.images}
-          price={product.price}
-          quantity={product.quantity}
-        />
+            <OrderCard
+              key={product.id}
+              id={product.id}
+              title={product.title}
+              imgUrl={product.images}
+              price={product.price}
+              quantity={product.quantity}
+            />
       ))
     titleMyOrder = <h1 className="text-2xl font-bold mb-2">My Order </h1>
   }
@@ -67,7 +67,7 @@ function MyOrder() {
        
         <div className="flex items-center justify-center relative w-80 mb-6">
           <Link to={'/my-orders'} className="absolute left-0">
-              <ChevronLeftIcon  className="h-6 w-6 text-black cursor-pointer"/>
+              <ChevronLeftIcon  className="h-6 w-6 text-slate-600  cursor-pointer hover:text-black"/>
           </Link>
           {titleMyOrder}
         </div>

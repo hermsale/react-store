@@ -6,9 +6,9 @@ import OrdersCard from "../../Components/OrdersCard"
 
 function MyOrders() {
 
-  const context = useContext(ShoppingCartContext)
-
-  console.log(context.order);
+  const {
+    order
+  } = useContext(ShoppingCartContext)
 
     return (
       <Layout>
@@ -17,7 +17,7 @@ function MyOrders() {
         </div>
         <div className="flex flex-col">
           {
-            context.order.map((order, index)=>
+            order.map((order, index)=>
               (
                 <Link key={index} to={`/my-orders/${index}`}>
                   <OrdersCard
